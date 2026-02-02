@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('notes');
+  return notes.map((note) => ({
+    params: { slug: note.slug },
+    props: { note },
+  }));
+}
+
+const { note } = Astro.props;
+const { Content } = await note.render();
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+---
+
+<BaseLayout
+  title={`${note.data.title} - David Cook`}
+  description={note.data.description}
+>
+  <article class="max-w-3xl mx-auto px-6 py-16">
+    <!-- Header -->
+    <header class="mb-12">
+      <div class="mb-4">
+        <a
+          href="/notes"
+          class="text-sm text-neutral-500 dark:text-neutral-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
+        >
+          &larr; All notes
+        </a>
+      </div>
+      <h1 class="text-4xl font-bold text-neutral-900 dark:text-white mb-4">
+        {note.data.title}
+      </h1>
+      <div class="flex flex-wrap items-center gap-4 text-sm text-neutral-500 dark:text-neutral-400">
+        <time datetime={note.data.date.toISOString()}>
+          {formatDate(note.data.date)}
+        </time>
+        {note.data.tags && note.data.tags.length > 0 && (
+          <div class="flex flex-wrap gap-2">
+            {note.data.tags.map((tag: string) => (
+              <span class="px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    </header>
+
+    <!-- Content -->
+    <div class="prose prose-neutral dark:prose-invert prose-lg max-w-none
+      prose-headings:font-semibold
+      prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
+      prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+      prose-p:text-neutral-700 dark:prose-p:text-neutral-300
+      prose-a:text-orange-600 dark:prose-a:text-orange-400 prose-a:no-underline hover:prose-a:underline
+      prose-strong:text-neutral-900 dark:prose-strong:text-white
+      prose-code:text-orange-600 dark:prose-code:text-orange-400 prose-code:bg-neutral-100 dark:prose-code:bg-neutral-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
+      prose-pre:bg-neutral-900 dark:prose-pre:bg-neutral-950 prose-pre:border prose-pre:border-neutral-200 dark:prose-pre:border-neutral-800
+      prose-blockquote:border-orange-500 prose-blockquote:bg-orange-50/50 dark:prose-blockquote:bg-orange-950/20 prose-blockquote:not-italic
+      prose-ul:text-neutral-700 dark:prose-ul:text-neutral-300
+      prose-ol:text-neutral-700 dark:prose-ol:text-neutral-300
+      prose-li:marker:text-orange-500
+    ">
+      <Content />
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-16 pt-8 border-t border-neutral-200 dark:border-neutral-800">
+      <a
+        href="/notes"
+        class="inline-flex items-center gap-2 text-neutral-600 dark:text-neutral-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Back to all notes
+      </a>
+    </footer>
+  </article>
+</BaseLayout>

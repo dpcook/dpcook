@@ -1,0 +1,418 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface Publication {
+  title: string;
+  authors: string;
+  journal: string;
+  year: number;
+  doi?: string;
+  highlight?: boolean;
+}
+
+const publications: Publication[] = [
+  // 2025
+  {
+    title: "Standardized metrics for assessment and reproducibility of imaging-based spatial transcriptomics datasets",
+    authors: "Plummer JT*, Dezem FS*, Cook DP*, Park J*, ... Wrana JL, ... Martelotto LG",
+    journal: "Nature Biotechnology",
+    year: 2025,
+    doi: "10.1038/s41587-025-02811-9",
+    highlight: true
+  },
+  {
+    title: "Loss of LATS1 and LATS2 promotes ovarian tumor formation by enhancing AKT activity and PD-L1 expression",
+    authors: "Zhu Y, Abedini A, ... Cook DP, Vanderhyden BC",
+    journal: "Oncogene",
+    year: 2025,
+    doi: "10.1038/s41388-025-03387-z"
+  },
+  {
+    title: "Inherent inter- and intratumoral heterogeneity drives phenotypic plasticity and treatment response of pancreatic cancer organoids",
+    authors: "Papargyriou A, Najajreh M, Cook DP, ... Rad R, Reichert M",
+    journal: "Nature Biomedical Engineering",
+    year: 2025,
+    doi: "10.1038/s41551-024-01273-9"
+  },
+  {
+    title: "LAG3 marks activated but hyporesponsive NK cells",
+    authors: "Vasilyeva V, Makinson O, ... Cook DP, ... Ardolino M, Marotel M",
+    journal: "European Journal of Immunology",
+    year: 2025,
+    doi: "10.1002/eji.70009"
+  },
+  {
+    title: "Transglutaminase 2 regulates ovarian cancer metastasis by modulating the immune microenvironment",
+    authors: "Ibrahim D, Grondin M, ... Cook DP, Keillor JW, Vanderhyden BC",
+    journal: "Frontiers in Immunology",
+    year: 2025,
+    doi: "10.3389/fimmu.2025.1639853"
+  },
+  {
+    title: "A human single-nuclei atlas reveals novel cell states during the pseudoglandular-to-canalicular transition",
+    authors: "Renesme L, Lesage F, Cook DP, ... Mižík I, Thébaud B",
+    journal: "American Journal of Respiratory Cell and Molecular Biology",
+    year: 2025,
+    doi: "10.1165/rcmb.2024-0244OC"
+  },
+  {
+    title: "Mapping disease-specific vascular cell populations responsible for obliterative arterial remodelling during the development of pulmonary arterial hypertension",
+    authors: "Cober ND, McCourt E, Godoy RS, ... Bonnet S, Stewart DJ",
+    journal: "Cardiovascular Research",
+    year: 2025,
+    doi: "10.1093/cvr/cvae191"
+  },
+  // 2024
+  {
+    title: "PD-L1 promotes oncolytic virus infection via a metabolic shift that inhibits the type I IFN pathway",
+    authors: "Hodgins JJ, Abou-Hamad J, ... Cook DP, Ardolino M",
+    journal: "Journal of Experimental Medicine",
+    year: 2024,
+    doi: "10.1084/jem.20221721"
+  },
+  {
+    title: "Single-cell RNA sequencing reveals repair features of human umbilical cord mesenchymal stromal cells",
+    authors: "Cyr-Depauw C, Cook DP, Mižík I, ... Vanderhyden BC, ... Thébaud B",
+    journal: "American Journal of Respiratory and Critical Care Medicine",
+    year: 2024,
+    doi: "10.1164/rccm.202310-1975OC"
+  },
+  {
+    title: "Transcriptional regulation of the postnatal cardiac conduction system heterogeneity",
+    authors: "Oh Y, Abid R, Dababneh S, Cook DP, ... Vanderhyden BC, ... Kim KH",
+    journal: "Nature Communications",
+    year: 2024,
+    doi: "10.1038/s41467-024-50849-1"
+  },
+  {
+    title: "PTEN loss shapes macrophage dynamics in high-grade serous ovarian carcinoma",
+    authors: "Spear S, Le Saux O, ... Cook DP, Vanderhyden BC, ... McNeish IA",
+    journal: "Cancer Research",
+    year: 2024,
+    doi: "10.1158/0008-5472.CAN-23-3890"
+  },
+  {
+    title: "The Drosophila adult midgut progenitor cells arise from asymmetric divisions in neuroblast-like cells",
+    authors: "Plygawko AT, Attolini CSO, Pitsidianaki I, Cook DP, Darby AC, Campbell K",
+    journal: "Developmental Cell",
+    year: 2024,
+    doi: "10.1016/j.devcel.2024.10.011"
+  },
+  {
+    title: "LINE1 and PRC2 control nucleolar organization and repression of the 8C state in human ESCs",
+    authors: "Zhang J, Ataei L, ... Cook DP, ... Wrana JL, ... Ramalho-Santos M",
+    journal: "Developmental Cell",
+    year: 2024,
+    doi: "10.1016/j.devcel.2024.09.024"
+  },
+  {
+    title: "Chromatin remodelling in damaged intestinal crypts orchestrates redundant TGFβ and Hippo signaling to drive regeneration",
+    authors: "Fink M, Njah K, Patel SJ, Cook DP, ... Wrana JL",
+    journal: "Nature Cell Biology",
+    year: 2024,
+    doi: "10.1038/s41556-024-01550-4"
+  },
+  {
+    title: "FGL2 promotes tumour growth and attenuates infiltration of activated immune cells in melanoma and ovarian cancer models",
+    authors: "Galpin KJC, Rodriguez GM, Maranda V, Cook DP, ... Ardolino M, Vanderhyden BC",
+    journal: "Scientific Reports",
+    year: 2024,
+    doi: "10.1038/s41598-024-51217-1"
+  },
+  // 2023
+  {
+    title: "Comparative analysis of syngeneic mouse models of high-grade serous ovarian cancer",
+    authors: "Cook DP, Galpin K, Rodriguez G, ... Koti M, Vanderhyden BC",
+    journal: "Communications Biology",
+    year: 2023,
+    doi: "10.1038/s42003-023-05529-z",
+    highlight: true
+  },
+  {
+    title: "Single cell analysis predicts CD8 T cell exhaustion through the LGALS3-LAG3 axis by mesenchymal cancer cells in ovarian tumours",
+    authors: "Yakubovich E, Cook DP, Rodriguez GM, Vanderhyden BC",
+    journal: "npj Systems Biology and Applications",
+    year: 2023,
+    doi: "10.1038/s41540-023-00322-4"
+  },
+  {
+    title: "Single cell transcriptomic atlas of lung microvascular regeneration after targeted endothelial cell ablation",
+    authors: "Godoy RS, Cober ND, Cook DP, ... Stewart DJ",
+    journal: "eLife",
+    year: 2023,
+    doi: "10.7554/eLife.80900"
+  },
+  {
+    title: "Prenatal low-dose methylmercury exposure causes CREB-dependent premature neuronal differentiation and autism-like behaviours in a rodent model",
+    authors: "Loan AC, Leung JW, Cook DP, Ko C, Vanderhyden BC, Wang J, Chan HM",
+    journal: "iScience",
+    year: 2023,
+    doi: "10.1016/j.isci.2023.106093"
+  },
+  {
+    title: "Absolute scaling of single-cell transcriptomes identifies pervasive hypertranscription in adult stem and progenitor cells",
+    authors: "Kim YK, Cho B, Cook DP, Trcka D, Wrana JL, Ramalho-Santos M",
+    journal: "Cell Reports",
+    year: 2023,
+    doi: "10.1016/j.celrep.2022.111978"
+  },
+  // 2022
+  {
+    title: "A specialist-generalist framework for epithelial-mesenchymal plasticity in cancer",
+    authors: "Cook DP, Wrana JL",
+    journal: "Trends in Cancer",
+    year: 2022,
+    doi: "10.1016/j.trecan.2022.01.014",
+    highlight: true
+  },
+  {
+    title: "Transcriptional census of epithelial-mesenchymal plasticity in cancer",
+    authors: "Cook DP, Vanderhyden BC",
+    journal: "Science Advances",
+    year: 2022,
+    doi: "10.1126/sciadv.abi7640",
+    highlight: true
+  },
+  {
+    title: "Metformin prevents age-associated ovarian fibrosis by modulating the immune landscape in female mice",
+    authors: "Landry DA, Yakubovich E, Cook DP, Fasih S, Upham J, Vanderhyden BC",
+    journal: "Science Advances",
+    year: 2022,
+    doi: "10.1126/sciadv.abq1475"
+  },
+  {
+    title: "When killers become thieves: trogocytosed PD-1 inhibits NK cells in cancer",
+    authors: "Hasim MS, Vulpis E, ... Cook DP, ... Ardolino M",
+    journal: "Science Advances",
+    year: 2022,
+    doi: "10.1126/sciadv.abj3286"
+  },
+  {
+    title: "The tumor immune profile of murine ovarian cancer models: an essential tool for ovarian cancer immunotherapy research",
+    authors: "Rodriguez G, Galpin K, Cook DP, ... Vanderhyden BC",
+    journal: "Cancer Research Communications",
+    year: 2022,
+    doi: "10.1158/2767-9764.CRC-22-0017"
+  },
+  {
+    title: "VIVA1: A more invasive subclone of MDA-MB-134VI invasive lobular carcinoma cells with increased metastatic potential in xenograft models",
+    authors: "Allen V, Coulombe J, ... Cook DP, ... Addison C",
+    journal: "British Journal of Cancer",
+    year: 2022,
+    doi: "10.1038/s41416-022-01778-7"
+  },
+  {
+    title: "Single-cell transcriptomic analysis of chemosensory neuroepithelial cells from the gills of zebrafish",
+    authors: "Pan W, Godoy RS, Cook DP, Scott AL, Nurse CA, Jonz MG",
+    journal: "Scientific Reports",
+    year: 2022,
+    doi: "10.1038/s41598-022-13693-1"
+  },
+  {
+    title: "Single-cell RNA sequencing-based characterization of resident lung mesenchymal stromal cells in bronchopulmonary dysplasia",
+    authors: "Mižíková I, Lesage F, Cyr-Depauw C, Cook DP, ... Vanderhyden BC, Thébaud B",
+    journal: "Stem Cells",
+    year: 2022,
+    doi: "10.1093/stmcls/sxab023"
+  },
+  {
+    title: "Preventing surgery-induced NK cell dysfunction using anti-TGFβ immunotherapeutics",
+    authors: "Market M, Tennakoon G, Scaffidi M, Cook DP, ... Vanderhyden BC, Auer RC",
+    journal: "International Journal of Molecular Sciences",
+    year: 2022,
+    doi: "10.3390/ijms232314608"
+  },
+  // 2021
+  {
+    title: "Transcriptional heterogeneity of stemness phenotypes in the ovarian epithelium",
+    authors: "Carter LE*, Cook DP*, McCloskey CW, ... Vanderhyden BC",
+    journal: "Communications Biology",
+    year: 2021,
+    doi: "10.1038/s42003-021-02045-w",
+    highlight: true
+  },
+  {
+    title: "Single-cell transcriptomic analysis of murine lung development on hyperoxia-induced damage",
+    authors: "Hurskainen KM, Mižíková I, Cook DP, ... Vanderhyden BC, Thébaud B",
+    journal: "Nature Communications",
+    year: 2021,
+    doi: "10.1038/s41467-021-21865-2"
+  },
+  {
+    title: "Identification of novel lipid droplet factors that regulate lipophagy and cholesterol efflux in macrophage foam cells",
+    authors: "Robichaud S, Fairman G, ... Cook DP, ... Ouimet M",
+    journal: "Autophagy",
+    year: 2021,
+    doi: "10.1080/15548627.2021.1886839"
+  },
+  {
+    title: "Identification of Rac guanine nucleotide exchange factors promoting Lgl1 phosphorylation in glioblastoma",
+    authors: "Lavictoire SJ, Jomaa D, Gont A, Jardine K, Cook DP, Lorimer IAJ",
+    journal: "Journal of Biological Chemistry",
+    year: 2021,
+    doi: "10.1016/j.jbc.2021.101172"
+  },
+  {
+    title: "Periostin gene expression in Neu-positive breast cancer cells is regulated by a FGFR signaling cross talk with TGFβ/PI3K/AKT pathways",
+    authors: "Labreche C, Cook DP, Abou-Hamad J, ... Sabourin L",
+    journal: "Breast Cancer Research",
+    year: 2021,
+    doi: "10.1186/s13058-021-01487-8"
+  },
+  // 2020
+  {
+    title: "Context specificity of the EMT transcriptional response",
+    authors: "Cook DP, Vanderhyden BC",
+    journal: "Nature Communications",
+    year: 2020,
+    doi: "10.1038/s41467-020-16066-2",
+    highlight: true
+  },
+  {
+    title: "RIPK1 gene variants associate with obesity in humans and can be therapeutically silenced to reduce obesity in mice",
+    authors: "Karunakaran D, Turner AW, ... Cook DP, ... Rayner KJ",
+    journal: "Nature Metabolism",
+    year: 2020,
+    doi: "10.1038/s42255-020-00279-2"
+  },
+  {
+    title: "Loss of the Ste20-like kinase induces a basal/stem-like phenotype in HER2-positive breast cancers",
+    authors: "Al-Zahrani K, Abou-Hamad J, Cook DP, ... Vanderhyden BC, Sabourin LA",
+    journal: "Oncogene",
+    year: 2020,
+    doi: "10.1038/s41388-020-1315-3"
+  },
+  {
+    title: "Science outreach: Six examples of programs that enrich the learning environments of students and educators",
+    authors: "Cook DP, Steed K, Read C, ... Carnegie J",
+    journal: "HAPS Educator",
+    year: 2020,
+    doi: "10.21692/haps.2020.107",
+    highlight: true
+  },
+  // 2019
+  {
+    title: "Ovarian cancer and the evolution of subtype classifications using transcriptional profiling",
+    authors: "Cook DP, Vanderhyden BC",
+    journal: "Biology of Reproduction",
+    year: 2019,
+    doi: "10.1093/biolre/ioz058",
+    highlight: true
+  },
+  {
+    title: "Metformin abrogates age-associated ovarian fibrosis",
+    authors: "McCloskey CW, Cook DP, Kelly BS, ... Vanderhyden BC",
+    journal: "Clinical Cancer Research",
+    year: 2019,
+    doi: "10.1158/1078-0432.CCR-19-0603"
+  },
+  {
+    title: "COX2 is induced in the ovarian epithelium during ovulatory wound repair and promotes cell survival",
+    authors: "Carter LE, Cook DP, Collins O, ... Vanderhyden BC",
+    journal: "Biology of Reproduction",
+    year: 2019,
+    doi: "10.1093/biolre/ioz134"
+  },
+  // 2018
+  {
+    title: "Single-cell RNA sequencing reveals transcriptional dynamics of estrogen-induced dysplasia in the ovarian surface epithelium",
+    authors: "Vuong NH*, Cook DP*, Forrest LA, ... Vanderhyden BC",
+    journal: "PLoS Genetics",
+    year: 2018,
+    doi: "10.1371/journal.pgen.1007788",
+    highlight: true
+  },
+  {
+    title: "Assessing the efficacy of androgen receptor and Sox10 as independent markers of the triple-negative breast cancer subtype by transcriptome profiling",
+    authors: "Al-Zahrani K, Cook DP, Vanderhyden BC, Sabourin LA",
+    journal: "Oncotarget",
+    year: 2018,
+    doi: "10.18632/oncotarget.26072"
+  },
+  // 2017
+  {
+    title: "The evolution and functional diversification of the deubiquitinating enzyme superfamily",
+    authors: "Vlasschaert C, Cook DP, Xia X, Gray D",
+    journal: "Genome Biology and Evolution",
+    year: 2017,
+    doi: "10.1093/gbe/evx020"
+  }
+];
+
+// Group publications by year
+const publicationsByYear = publications.reduce((acc, pub) => {
+  if (!acc[pub.year]) {
+    acc[pub.year] = [];
+  }
+  acc[pub.year].push(pub);
+  return acc;
+}, {} as Record<number, Publication[]>);
+
+// Sort years in descending order
+const sortedYears = Object.keys(publicationsByYear)
+  .map(Number)
+  .sort((a, b) => b - a);
+---
+
+<BaseLayout
+  title="Publications - David Cook"
+  description="Peer-reviewed publications from David Cook's research in cancer biology, single-cell genomics, and gynecologic disease."
+>
+  <article class="max-w-3xl mx-auto px-6 py-16">
+    <header class="mb-12">
+      <h1 class="text-4xl font-bold text-neutral-900 dark:text-white mb-4">
+        Publications
+      </h1>
+      <p class="text-lg text-neutral-600 dark:text-neutral-400">
+        Peer-reviewed research articles and reviews
+      </p>
+      <p class="text-sm text-neutral-500 dark:text-neutral-500 mt-2">
+        * denotes equal contribution · Highlighted papers indicate first/corresponding author work
+      </p>
+    </header>
+
+    <div class="space-y-12">
+      {sortedYears.map((year) => (
+        <section>
+          <h2 class="text-xl font-semibold text-neutral-900 dark:text-white mb-6 pb-2 border-b border-neutral-200 dark:border-neutral-800">
+            {year}
+          </h2>
+          <ul class="space-y-4">
+            {publicationsByYear[year].map((pub) => (
+              <li class={`${pub.highlight ? 'pl-4 border-l-2 border-orange-400' : ''}`}>
+                <a
+                  href={pub.doi ? `https://doi.org/${pub.doi}` : '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`block group ${pub.doi ? '' : 'pointer-events-none'}`}
+                >
+                  <h3 class="text-sm font-medium text-neutral-900 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors leading-snug">
+                    {pub.title}
+                  </h3>
+                </a>
+                <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
+                  {pub.authors}
+                </p>
+                <p class="text-sm text-neutral-500 dark:text-neutral-500 mt-0.5">
+                  <em>{pub.journal}</em>
+                  {pub.doi && (
+                    <span class="ml-2">
+                      <a
+                        href={`https://doi.org/${pub.doi}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-orange-600 dark:text-orange-400 hover:underline"
+                      >
+                        Link ↗
+                      </a>
+                    </span>
+                  )}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+  </article>
+</BaseLayout>

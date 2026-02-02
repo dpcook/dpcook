@@ -1,0 +1,212 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Timeline from '../components/Timeline.astro';
+
+const timelineItems = [
+  {
+    year: '2024 - Present',
+    title: 'Scientist & Assistant Professor',
+    subtitle: 'Ottawa Hospital Research Institute / University of Ottawa',
+    description: 'Leading a research program focused on understanding cellular plasticity in gynecologic cancers using single-cell and spatial genomics.',
+    highlight: true
+  },
+  {
+    year: '2021 - 2024',
+    title: 'Banting Postdoctoral Fellow',
+    subtitle: 'Lunenfeld-Tanenbaum Research Institute, Toronto',
+    description: 'Explored tissue organization and cellular plasticity in the intestine with Dr. Jeff Wrana. Co-led international spatial transcriptomics benchmarking study.'
+  },
+  {
+    year: '2021',
+    title: 'PhD, Cellular and Molecular Medicine',
+    subtitle: 'University of Ottawa',
+    description: 'Thesis: Defining Epithelial-Mesenchymal Plasticity in Cancer Using Single-Cell Genomics. Supervised by Dr. Barbara Vanderhyden.'
+  },
+  {
+    year: '2016',
+    title: 'MSc, Cellular and Molecular Medicine',
+    subtitle: 'University of Ottawa',
+    description: 'Studied chromatin remodelling and pluripotency regulation.'
+  },
+  {
+    year: '2014',
+    title: 'HonBSc, Physiology',
+    subtitle: 'University of Ottawa'
+  }
+];
+---
+
+<BaseLayout
+  title="About - David Cook"
+  description="Learn about David Cook's research journey in cancer biology, single-cell genomics, and translational research."
+>
+  <article class="max-w-3xl mx-auto px-6 py-16">
+    <!-- Header -->
+    <header class="mb-12">
+      <h1 class="text-4xl font-bold text-neutral-900 dark:text-white mb-4">
+        About
+      </h1>
+      <p class="text-lg text-neutral-600 dark:text-neutral-400">
+        Translational scientist focused on gynecologic health
+      </p>
+    </header>
+
+    <!-- Bio section with image -->
+    <section class="mb-16">
+      <div class="flex flex-col md:flex-row gap-8 items-start">
+        <div class="md:flex-1 space-y-4 text-neutral-700 dark:text-neutral-300">
+          <p>
+            I'm a translational scientist in the Cancer Research Program at the Ottawa Hospital Research
+            Institute and Assistant Professor in the Department of Cellular and Molecular Medicine at
+            the University of Ottawa. My lab focuses on gynecologic diseases—ovarian cancer, endometriosis,
+            and related conditions—using genomics to understand their biology and develop better approaches
+            for prevention, detection, and treatment.
+          </p>
+          <p>
+            Our work addresses several critical challenges: Why do some ovarian cancers resist therapy
+            while others respond? Can we develop molecular diagnostics that improve how we detect and
+            manage endometriosis? How can we better characterize rare disease subtypes to identify new
+            therapeutic targets? These questions drive our research program and shape our collaborations—both
+            with clinical partners here at The Ottawa Hospital and with research groups around the world.
+          </p>
+          <p>
+            We approach these problems using single-cell and spatial genomics—technologies that let us
+            study thousands of individual cells within their native tissue context. This resolution reveals
+            how tumors evolve, how cells adapt to treatment, and how the tissue microenvironment shapes
+            disease progression. By combining computational analysis with experimental biology, we aim to
+            turn these insights into clinical impact.
+          </p>
+        </div>
+        <div class="md:flex-shrink-0">
+          <img
+            src="/images/Cook_Pipette.jpg"
+            alt="David Cook working in the lab"
+            class="w-full md:w-64 rounded-lg shadow-lg"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Research interests -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-semibold text-neutral-900 dark:text-white mb-6">
+        Research Focus
+      </h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="p-4 rounded-lg bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800">
+          <h3 class="font-medium text-neutral-900 dark:text-white mb-2">
+            Cellular Plasticity
+          </h3>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400">
+            Understanding how cancer cells transition between phenotypic states during disease
+            progression and therapy response.
+          </p>
+        </div>
+        <div class="p-4 rounded-lg bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800">
+          <h3 class="font-medium text-neutral-900 dark:text-white mb-2">
+            Gynecologic Cancers
+          </h3>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400">
+            Focused on the diversity of ovarian cancers, understanding treatment resistance, and
+            identifying new therapeutic vulnerabilities.
+          </p>
+        </div>
+        <div class="p-4 rounded-lg bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800">
+          <h3 class="font-medium text-neutral-900 dark:text-white mb-2">
+            Single-Cell Genomics
+          </h3>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400">
+            Applying and developing single-cell RNA sequencing approaches to resolve cellular
+            heterogeneity in tumors.
+          </p>
+        </div>
+        <div class="p-4 rounded-lg bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800">
+          <h3 class="font-medium text-neutral-900 dark:text-white mb-2">
+            Spatial Transcriptomics
+          </h3>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400">
+            Mapping gene expression in tissue sections to understand how the microenvironment
+            shapes cell behavior.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-semibold text-neutral-900 dark:text-white mb-8">
+        Journey
+      </h2>
+      <Timeline items={timelineItems} />
+    </section>
+
+    <!-- Selected recognition -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-semibold text-neutral-900 dark:text-white mb-6">
+        Selected Recognition
+      </h2>
+      <ul class="space-y-3">
+        <li class="flex items-start gap-3">
+          <span class="text-orange-500 mt-1.5">&#8226;</span>
+          <div>
+            <span class="font-medium text-neutral-900 dark:text-white">John Charles Polanyi Prize</span>
+            <span class="text-neutral-600 dark:text-neutral-400"> in Physiology or Medicine (2025)</span>
+          </div>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-orange-500 mt-1.5">&#8226;</span>
+          <div>
+            <span class="font-medium text-neutral-900 dark:text-white">CIHR Banting Postdoctoral Fellowship</span>
+            <span class="text-neutral-600 dark:text-neutral-400"> (2021-2023)</span>
+          </div>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-orange-500 mt-1.5">&#8226;</span>
+          <div>
+            <span class="font-medium text-neutral-900 dark:text-white">OICR Rising Stars Award</span>
+            <span class="text-neutral-600 dark:text-neutral-400"> (2022)</span>
+          </div>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-orange-500 mt-1.5">&#8226;</span>
+          <div>
+            <span class="font-medium text-neutral-900 dark:text-white">Best PhD Thesis</span>
+            <span class="text-neutral-600 dark:text-neutral-400"> - Dept. of Cellular and Molecular Medicine (2021)</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Contact -->
+    <section class="p-6 rounded-xl bg-orange-50 dark:bg-orange-950/30 border border-orange-200 dark:border-orange-800/50">
+      <h2 class="text-lg font-semibold text-neutral-900 dark:text-white mb-3">
+        Get in Touch
+      </h2>
+      <p class="text-neutral-700 dark:text-neutral-300 mb-4">
+        Interested in collaboration, joining the lab, or just want to chat about science?
+      </p>
+      <div class="flex flex-wrap gap-4 text-sm">
+        <a
+          href="mailto:dacook@ohri.ca"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-700 hover:border-orange-300 dark:hover:border-orange-700 transition-colors"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          dacook@ohri.ca
+        </a>
+        <a
+          href="https://scholar.google.ca/citations?user=aBCxvUIAAAAJ&hl=en"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-700 hover:border-orange-300 dark:hover:border-orange-700 transition-colors"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" />
+          </svg>
+          Google Scholar
+        </a>
+      </div>
+    </section>
+  </article>
+</BaseLayout>

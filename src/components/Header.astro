@@ -1,0 +1,53 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '' } = Astro.props;
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/publications', label: 'Publications' },
+  { href: '/notes', label: 'Notes' },
+];
+
+function isActive(href: string): boolean {
+  if (href === '/') {
+    return currentPath === '/';
+  }
+  return currentPath.startsWith(href);
+}
+---
+
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800">
+  <nav class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a
+      href="/"
+      class="text-lg font-semibold text-neutral-900 dark:text-neutral-100 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
+    >
+      David Cook
+    </a>
+
+    <div class="flex items-center gap-1">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            'px-3 py-2 rounded-lg text-sm font-medium transition-colors',
+            isActive(link.href)
+              ? 'text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-950/50'
+              : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800'
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+      <div class="ml-2 border-l border-neutral-200 dark:border-neutral-700 pl-2">
+        <ThemeToggle />
+      </div>
+    </div>
+  </nav>
+</header>

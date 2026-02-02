@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const highlights = [
+  {
+    year: '2025',
+    text: 'Launched the Ottawa GynePath Biobank at The Ottawa Hospital with Dr. Sony Singh'
+  },
+  {
+    year: '2025',
+    text: 'Awarded the John Charles Polanyi Prize in Physiology or Medicine'
+  },
+  {
+    year: '2025',
+    text: 'Spatial Touchstone project published in <a href="https://www.nature.com/articles/s41587-025-02811-9" target="_blank" rel="noopener noreferrer"><em>Nature Biotechnology</em></a> to establish best practices for imaging-based spatial transcriptomics'
+  },
+  {
+    year: '2024',
+    text: 'Established independent research lab at OHRI'
+  },
+  // Add more highlights below as needed - older ones will be hidden behind "See more"
+];
+
+const visibleCount = 4;
+const hasMore = highlights.length > visibleCount;
+---
+
+<BaseLayout title="David Cook - Scientist & Researcher">
+  <section class="max-w-3xl mx-auto px-6 py-16 md:py-24">
+    <div class="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
+      <!-- Headshot -->
+      <div class="flex-shrink-0">
+        <img
+          src="/images/Cook_Headshot.jpg"
+          alt="David Cook"
+          class="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover shadow-lg ring-4 ring-white dark:ring-neutral-800"
+        />
+      </div>
+
+      <!-- Introduction -->
+      <div class="text-center md:text-left animate-fade-in">
+        <h1 class="text-4xl md:text-5xl font-bold text-neutral-900 dark:text-white mb-4">
+          David Cook
+        </h1>
+        <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-6">
+          Scientist at Ottawa Hospital Research Institute<br class="hidden md:block" />
+          <span class="md:hidden"> &middot; </span>
+          Assistant Professor, University of Ottawa
+        </p>
+        <p class="text-neutral-700 dark:text-neutral-300 leading-relaxed max-w-xl">
+          My lab uses genomics to tackle the most pressing challenges in gynecologic health—from
+          understanding why ovarian cancers resist treatment, to developing better diagnostics for
+          endometriosis. We combine single-cell and spatial technologies with clinical partnerships
+          to translate discoveries into improved care for patients.
+        </p>
+      </div>
+    </div>
+
+    <!-- Quick links -->
+    <div class="mt-16 pt-12 border-t border-neutral-200 dark:border-neutral-800">
+      <div class="grid md:grid-cols-2 gap-6">
+        <a
+          href="/about"
+          class="group p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:border-orange-300 dark:hover:border-orange-700 hover:bg-orange-50/50 dark:hover:bg-orange-950/20 transition-all"
+        >
+          <h2 class="text-lg font-semibold text-neutral-900 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors mb-2">
+            About &rarr;
+          </h2>
+          <p class="text-neutral-600 dark:text-neutral-400 text-sm">
+            Education, training, and what drives my research.
+          </p>
+        </a>
+
+        <a
+          href="/notes"
+          class="group p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:border-orange-300 dark:hover:border-orange-700 hover:bg-orange-50/50 dark:hover:bg-orange-950/20 transition-all"
+        >
+          <h2 class="text-lg font-semibold text-neutral-900 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors mb-2">
+            Notes &rarr;
+          </h2>
+          <p class="text-neutral-600 dark:text-neutral-400 text-sm">
+            Thoughts on science, technology, and the research process.
+          </p>
+        </a>
+      </div>
+    </div>
+
+    <!-- Highlights -->
+    <div class="mt-12 p-6 rounded-xl bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800">
+      <h3 class="text-sm font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-4">
+        Recent Highlights
+      </h3>
+      <ul class="space-y-3 text-sm" id="highlights-list">
+        {highlights.map((highlight, index) => (
+          <li
+            class={`flex items-start gap-3 ${index >= visibleCount ? 'hidden highlight-extra' : ''}`}
+          >
+            <span class="text-orange-500 mt-1">&#8226;</span>
+            <span class="text-neutral-700 dark:text-neutral-300">
+              <span class="font-medium">{highlight.year}</span> &mdash; <Fragment set:html={highlight.text} />
+            </span>
+          </li>
+        ))}
+      </ul>
+      {hasMore && (
+        <button
+          id="show-more-btn"
+          class="mt-4 text-sm text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 transition-colors cursor-pointer"
+        >
+          See more ↓
+        </button>
+      )}
+    </div>
+
+    <script>
+      const btn = document.getElementById('show-more-btn');
+      const extras = document.querySelectorAll('.highlight-extra');
+      let expanded = false;
+
+      btn?.addEventListener('click', () => {
+        expanded = !expanded;
+        extras.forEach(el => el.classList.toggle('hidden', !expanded));
+        if (btn) {
+          btn.textContent = expanded ? 'See less ↑' : 'See more ↓';
+        }
+      });
+    </script>
+  </section>
+</BaseLayout>
